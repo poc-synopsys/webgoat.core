@@ -1,0 +1,28 @@
+capture:
+  build:
+    aspnet-compiler: true
+    build-command: dotnet build
+    clean-command: dotnet clean    
+  security-da: false
+analyze:
+  aggressiveness-level: medium
+  checkers:
+    all: true
+    android-security: true
+    audit: true
+    brakeman: true
+    c-family-security: true  
+    concurrency: true
+    default: true
+    pmd: true
+    rule: false    
+    webapp-security:
+      enabled: true
+      aggressiveness-level: medium
+  constraint-fpp: true
+  cov-analyze-args:
+#  - <value>
+commit:
+  connect:
+    stream: webgoat.core
+    url: https://partner-demo.coverity.synopsys.com

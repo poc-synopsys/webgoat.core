@@ -16,7 +16,9 @@ jobs:
       BLACKDUCK_API_TOKEN: ${{ secrets.BLACKDUCK_API_TOKEN }}
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2        
+    - name: Restore
+      run: dotnet restore
 
     - name: Download Bridge CLI
       run: |

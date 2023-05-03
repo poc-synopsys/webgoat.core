@@ -1,4 +1,4 @@
-name: "Synopsys Full Scan"
+name: "Coverity On Premises"
 
 on:
   workflow_dispatch

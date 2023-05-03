@@ -1,0 +1,32 @@
+name: Synopsys - Actions
+
+on:
+  workflow_dispatch
+
+jobs:
+  Polaris:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2        
+    - name: Restore
+      run: dotnet restore
+      
+    - name: Polaris Scan (SAST)
+      uses: synopsys-sig/synopsys-action@v1.1.0
+      with:
+        polaris_serverUrl: ${{ secrets.BRIDGE_POLARIS_SERVERURL }}
+        polaris_accessToken: ${{ secrets.BRIDGE_POLARIS_ACCESSTOKEN }}
+        polaris_application_name: "FCBR"
+        polaris_project_name: "insecure-bank"
+        polaris_assessment_types: "SAST"
+        
+    - name: Black Duck Scan (SCA)
+      uses: synopsys-sig/synopsys-action@v1.1.0
+      env:
+        DETECT_PROJECT_NAME: ${{ github.event.repository.name }}
+        DETECT_PROJECT_VERSION_NAME: ${{ github.ref_name }}
+        DETECT_CODE_LOCATION_NAME: ${{ github.event.repository.name }}-${{ github.ref_name }}
+      with:
+        blackduck_url: ${{ secrets.BLACKDUCK_URL }}
+        blackduck_apiToken: ${{ secrets.BLACKDUCK_API_TOKEN }}
+        blackduck_automation_fixpr: false

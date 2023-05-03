@@ -1,6 +1,19 @@
+## SYNOPSYS ##
+
+# Synopsys Bridge
+.bridge
+bridge.log
+bridge_state.json
 idir
+
+# Coverity on Polaris
 .synopsys
-.polaris
+.polaris-output.zip
+
+# Sigma
+sigma-results.json
+
+# Project related
 .vs
 *.suo
 *.user
@@ -12,5 +25,3 @@ idir
 x64/
 app/
 packages
-.synopsys/
-.polaris-coverity.zip

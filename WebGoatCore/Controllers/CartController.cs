@@ -6,6 +6,16 @@ using System;
 namespace WebGoatCore.Controllers
 {
     [Route("[controller]/[action]")]
+
+    class Example {
+    void testDiv(int a, int b)
+    {
+        if (a!=0) {
+           //Do something
+        }
+        int y = b / a;
+    }
+}
     public class CartController : Controller
     {
         private readonly ProductRepository _productRepository;

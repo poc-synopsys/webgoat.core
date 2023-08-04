@@ -1,4 +1,4 @@
-name: Synopsys - Actions
+name: Synopsys Action - Black Duck
 
 on:
   workflow_dispatch
